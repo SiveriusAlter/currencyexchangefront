@@ -1,0 +1,14 @@
+<nav>
+    <img src="/assets/images/bugtrade.png" class="logo">
+    <ul class="menu-list">
+
+        @for (menuItem of menuItems; track menuItem) {
+        <li class="menu-item">
+            <button class="menu-button" [routerLink]="[menuItem.link]" routerLinkActive="active">
+                <svg icon={{menuItem.icon}} class="svg-icon"></svg>
+                <span>{{menuItem.label}}</span>
+            </button>
+        </li>
+        }
+    </ul>
+</nav>

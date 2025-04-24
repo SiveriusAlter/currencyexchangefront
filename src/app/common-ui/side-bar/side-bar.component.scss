@@ -1,0 +1,54 @@
+:host {
+    display: block;
+    background: var(--black-collor);
+    border-radius: 16px;
+    padding: 10px 10px;
+}
+
+.menu-list {
+    list-style: none;
+    grid-gap: 16px;
+}
+
+.menu-item {
+    padding: 8px 0px;
+}
+
+.menu-button {
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 24px;
+    border-radius: 8px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background: var(--button-dark-color);
+    color: var(--light-color);
+    display: grid;
+    grid-template-columns: 16px max-content;
+    grid-gap: 16px;
+    align-items: center;
+    width: 90%;
+    box-shadow: -4px 4px 4px #13031e, 
+    0 8px 10px #13031e;
+
+    &.active,
+    &:hover,
+    &:focus-visible {
+        background: var(--primary-collor);
+        border-radius: 8px;
+        color: var(--black-collor);
+        box-shadow: -4px 4px 4px #652a83, 
+        0 8px 10px #652a83;
+    }
+}
+
+.svg-icon {
+    height: 24px;
+    width: 24px;
+}
+
+.logo {
+    height: 200px;
+    width: 280px;
+}

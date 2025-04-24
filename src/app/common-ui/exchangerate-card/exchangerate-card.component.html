@@ -1,0 +1,16 @@
+@if(exchangerate) {
+    <div class="currency-card">
+        <div class="currency-field">
+            <strong>{{ exchangerate!.baseCurrency.code }}</strong>
+        </div>
+        <div class="currency-field">
+            <strong>{{ exchangerate!.targetCurrency.code }}</strong>
+        </div>
+        <div class="currency-field">
+            <strong>{{ exchangerate!.rate }}</strong>
+        </div>
+    </div>
+} @else {
+    Error: exchangerate not found!
+}
+

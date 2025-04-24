@@ -1,0 +1,15 @@
+@if (currency) {
+    <div class="currency-card">
+        <div class="currency-field">
+            <strong>{{ currency!.fullName }}</strong>
+        </div>
+        <div class="currency-field">
+            <strong>{{ currency!.code }}</strong>
+        </div>
+        <div class="currency-field">
+            <strong>{{ currency!.sign }}</strong>
+        </div>
+    </div>
+} @else {
+    Error: currency not found!
+}

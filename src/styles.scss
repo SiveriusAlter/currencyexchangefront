@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@import "fonts";
+
+:root {
+    --dark-color: #1c181c;
+    --light-color: #FFFFFF;
+    --primary-collor: #9b29c1;
+    --black-collor: #000000;
+    --button-dark-color: #100621;
+}
+
+body {
+background: var(--dark-color);
+color: var(--light-color);
+}
+
+.btn {
+    width: 200px;
+    border: none;
+    background: var(--primary-collor);
+    color: var(--dark-color);
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px #13031e;
+    margin: 10px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+
+
+    &:hover {
+        border-color: var(--primary-collor);
+        box-shadow: 0 2px 8px var(--primary-collor);
+    }
+}
+
+.h1 {
+    font-weight: 800;
+    line-height: 56px;
+    font-size: 48px;
+    text-align: center;
+}

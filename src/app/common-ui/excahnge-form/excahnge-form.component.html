@@ -1,0 +1,23 @@
+<form class="exchange-form">
+    <div class="one-line">
+        <input type="number" step="0.01" min="0" value="0" class="input-amount"/>
+            <select name="currencies" class="select-currency">
+                @for (currency of currencies; track currency.code) {
+                <option>{{currency.fullName}}</option>
+                }
+            </select>
+    </div>
+    <div class="one-line">
+        <input type="number" step="0.01" min="0" class="input-amount"/>
+            <select name="currencies" class="select-currency">
+                @for (currency of currencies; track currency.code) {
+                <option>{{currency.fullName}}</option>
+                }
+            </select>
+    </div>
+    <div>
+        <button class="btn">
+            <span>Convert</span>
+        </button>
+    </div>
+</form>
