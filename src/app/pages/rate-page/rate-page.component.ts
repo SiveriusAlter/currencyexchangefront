@@ -6,7 +6,7 @@ import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-rate-page',
-  imports: [ExchangerateCardComponent, JsonPipe],
+  imports: [ExchangerateCardComponent],
   templateUrl: './rate-page.component.html',
   styleUrl: './rate-page.component.scss'
 })

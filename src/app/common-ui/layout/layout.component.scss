@@ -3,6 +3,15 @@
     grid-template-columns: 300px 50px auto;
 }
 
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
 .footter {
     position: fixed;
     bottom: 0;
