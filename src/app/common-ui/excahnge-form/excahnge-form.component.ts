@@ -1,6 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Currency } from '../../data/interfaces/currency.interface';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ExchangeService } from '../../data/services/exchange/exchange.service';
+import { ExchangeResult } from '../../data/interfaces/exchangeresult';
 
 @Component({
   selector: 'app-excahnge-form',
@@ -9,19 +11,27 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './excahnge-form.component.scss'
 })
 export class ExcahngeFormComponent {
-
+  fb = inject(FormBuilder);
   @Input() baseCurrency!: Currency[];
   @Input() targetCurrency!: Currency[];
 
-  form: FormGroup = new FormGroup({
-    baseCurrency: new FormControl(1),
-    targetCurrency: new FormControl(1),
-    amountExchange: new FormControl(0)
-  }
+  exchangeService: ExchangeService = inject(ExchangeService);
+  exchangeResult: ExchangeResult | undefined
+  form = this.fb.group(
+    {
+      baseCurrency: [1, Validators.required],
+      targetCurrency: [1, Validators.required],
+      amount: [0],
+//      convertAmount: [0]
+    }
   );
-
 
   onSubmit() {
     console.log(this.form.value)
+    this.form.markAllAsTouched
+    this.form.updateValueAndValidity
+    // @ts-ignore
+    this.exchangeService.getAmount(this.form.value).subscribe(val => this.exchangeResult = val)
   }
+
 }

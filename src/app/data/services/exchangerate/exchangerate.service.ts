@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../app.config';
-import { ExchangeRate } from '../../interfaces/exchangerate.interface';
+import { ExchangeResult } from '../../interfaces/exchangeresult';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,6 @@ export class ExchangerateService {
   baseAPIUrl = environment.apiUrl;
   constructor() {}
     getRate() {
-      return this.http.get<ExchangeRate[]>(`${this.baseAPIUrl}ExchangeRate`)
+      return this.http.get<ExchangeResult[]>(`${this.baseAPIUrl}ExchangeRate`)
     }
 }
