@@ -11,13 +11,13 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './rate-page.component.scss'
 })
 export class RatePageComponent {
-  exchangeservice =  inject(ExchangerateService)
+  exchangeservice = inject(ExchangerateService)
   exchangerate: ExchangeRate[] = []
   exr: ExchangeRate = this.exchangerate[0]
   constructor() {
     this.exchangeservice.getRate()
-    .subscribe(val => {
-      this.exchangerate = val;
-    })
+      .subscribe(val => {
+        this.exchangerate = val;
+      })
   }
 }

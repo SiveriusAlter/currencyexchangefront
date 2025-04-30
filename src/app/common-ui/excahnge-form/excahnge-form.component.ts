@@ -12,8 +12,7 @@ import { ExchangeResult } from '../../data/interfaces/exchangeresult';
 })
 export class ExcahngeFormComponent {
   fb = inject(FormBuilder);
-  @Input() baseCurrency!: Currency[];
-  @Input() targetCurrency!: Currency[];
+  @Input() currencies!: Currency[];
 
   exchangeService: ExchangeService = inject(ExchangeService);
   exchangeResult: ExchangeResult | undefined
@@ -22,7 +21,6 @@ export class ExcahngeFormComponent {
       baseCurrency: [1, Validators.required],
       targetCurrency: [1, Validators.required],
       amount: [0],
-//      convertAmount: [0]
     }
   );
 

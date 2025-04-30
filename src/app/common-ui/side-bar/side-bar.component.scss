@@ -29,8 +29,8 @@
     grid-gap: 16px;
     align-items: center;
     width: 90%;
-    box-shadow: -4px 4px 4px #13031e, 
-    0 8px 10px #13031e;
+    box-shadow: -4px 4px 4px #13031e,
+        0 8px 10px #13031e;
 
     &.active,
     &:hover,
@@ -38,8 +38,8 @@
         background: var(--primary-collor);
         border-radius: 8px;
         color: var(--black-collor);
-        box-shadow: -4px 4px 4px #652a83, 
-        0 8px 10px #652a83;
+        box-shadow: -4px 4px 4px #652a83,
+            0 8px 10px #652a83;
     }
 }
 

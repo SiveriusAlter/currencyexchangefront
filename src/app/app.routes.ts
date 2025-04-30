@@ -9,10 +9,10 @@ export const routes: Routes = [
     {
         path: '', component: LayoutComponent, children: [
             {path: '', redirectTo: 'home', pathMatch: 'full'},
-            { path: 'home', component: CurreciesPageComponent },
-            { path: 'exchange', component: ExchangesPageComponent },
-            { path: 'rate', component: RatePageComponent },
-            { path: 'settings', component: SettingsPageComponent }
+            { path: 'home', title: 'CurrenciesPage', component: CurreciesPageComponent },
+            { path: 'exchange', title: 'ExchangesPage', component: ExchangesPageComponent },
+            { path: 'rate', title: 'RatePagee', component: RatePageComponent },
+            { path: 'settings', title: 'SettingsPage', component: SettingsPageComponent }
         ]
     }
 ];

@@ -1,0 +1,25 @@
+<form class="exchange-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="label-grid">
+        <label class="label" for="Base currency">Base currency</label>
+        <label class="label" for="Target currency">Target currency</label>
+        <label class="label" for="Rate">Rate</label>
+    </div>
+    <div class="one-line">
+        <select formControlName="baseCurrency" class="select-currency" required>
+            @for (currency of currencies; track currency.id) {
+            <option label="{{currency.fullName}}   {{currency.sign}}">{{currency.id}}</option>
+            }
+        </select>
+        <select formControlName="targetCurrency" class="select-currency" required>
+            @for (currency of currencies; track currency.id) {
+            <option label="{{currency.fullName}}   {{currency.sign}}">{{currency.id}}</option>
+            }
+        </select>
+        <input id="rate" formControlName="rate" type="number" step="0.001" min="0" value="0" class="input-amount" />
+    </div>
+    <div>
+        <button class="btn" type="submit">
+            Send
+        </button>
+    </div>
+</form>

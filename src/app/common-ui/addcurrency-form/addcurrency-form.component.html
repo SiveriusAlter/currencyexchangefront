@@ -1,0 +1,17 @@
+<form class="exchange-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="label-grid">
+        <label class="label" for="code">Code</label>
+        <label class="label" for="fullName">Full Name</label>
+        <label class="label" for="sign">Sign</label>
+    </div>
+    <div class="one-line">
+        <input id="code" formControlName="code" type="text" pattern="[A-Z]" class="input-amount" />
+        <input id="fullName" formControlName="fullName" type="text" class="input-amount" />
+        <input id="sign" formControlName="sign" type="text" class="input-amount" />
+    </div>
+    <div>
+        <button class="btn" type="submit">
+            Send
+        </button>
+    </div>
+</form>
