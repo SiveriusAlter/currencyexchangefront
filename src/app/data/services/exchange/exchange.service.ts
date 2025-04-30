@@ -10,11 +10,11 @@ export class ExchangeService {
 
   http: HttpClient = inject(HttpClient)
 
-  baseAPIUrl = "http://localhost:5150/Exchange/";
+  baseAPIUrl = environment.apiUrl;
   constructor() { }
 
-  getAmount(test: {baseCurrency: number, targetCurrency: number, amount: number, convertAmount: number}) {
-    return this.http.get<ExchangeResult>(`${this.baseAPIUrl}from=${test.baseCurrency}&to=${test.targetCurrency}&amount=${test.amount}`)
+  getAmount(test: { baseCurrency: number, targetCurrency: number, amount: number }) {
+    return this.http.get<ExchangeResult>(`${this.baseAPIUrl}Exchange/from=${test.baseCurrency}&to=${test.targetCurrency}&amount=${test.amount}`)
   }
 
 
