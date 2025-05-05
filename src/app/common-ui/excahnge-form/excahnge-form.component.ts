@@ -18,9 +18,9 @@ export class ExcahngeFormComponent {
   exchangeResult: ExchangeResult | undefined
   form = this.fb.group(
     {
-      baseCurrency: [1, Validators.required],
-      targetCurrency: [1, Validators.required],
-      amount: [0],
+      baseCurrency: ['RUB', Validators.required],
+      targetCurrency: ['RUB', Validators.required],
+      amount: [1],
     }
   );
 

@@ -1,5 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ExchangeRate } from '../../data/interfaces/exchangerate.interface';
+import { ExchangerateService } from '../../data/services/exchangerate/exchangerate.service';
 import { Currency } from '../../data/interfaces/currency.interface';
 
 @Component({
@@ -10,24 +12,24 @@ import { Currency } from '../../data/interfaces/currency.interface';
 })
 export class AddrateFormComponent {
   fb = inject(FormBuilder);
-  @Input() currencies: Currency[] = [];
+  @Input() currencies!: Currency[];
 
-  //exchangeService: ExchangeService = inject(ExchangeService);
-  //exchangeResult: ExchangeResult | undefined
+  exchangeRateService: ExchangerateService = inject(ExchangerateService);
+  exchangeRate: ExchangeRate | undefined;
   form = this.fb.group(
     {
-      baseCurrency: ['', Validators.required],
-      targetCurrency: ['', Validators.required],
-      rate: [''],
+      baseCurrencyCode: ['RUB', Validators.required],
+      targetCurrencyCode: ['RUB', Validators.required],
+      rate: [1],
     }
   );
 
   onSubmit() {
     console.log(this.form.value)
-    //this.form.markAllAsTouched
-    //this.form.updateValueAndValidity
+    this.form.markAllAsTouched
+    this.form.updateValueAndValidity
     // @ts-ignore
-    // this.exchangeService.getAmount(this.form.value).subscribe(val => this.exchangeResult = val)
+    this.exchangeRateService.addRate(this.form.value).subscribe(val => this.exchangeRate = val)
   }
 }
 

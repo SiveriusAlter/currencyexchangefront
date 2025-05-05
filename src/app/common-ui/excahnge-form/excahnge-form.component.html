@@ -8,7 +8,7 @@
             <select formControlName="baseCurrency"
             class="select-currency" required>
                 @for (currency of currencies; track currency.id) {
-                <option label="{{currency.fullName}}   {{currency.sign}}">{{currency.id}}</option>
+                <option label="{{currency.fullName}}   {{currency.sign}}">{{currency.code}}</option>
                 }
             </select>
 
@@ -20,7 +20,7 @@
             <select formControlName="targetCurrency"
             class="select-currency" required>
                 @for (currency of currencies; track currency.id) {
-                <option label="{{currency.fullName}}   {{currency.sign}}">{{currency.id}}</option>
+                <option label="{{currency.fullName}}   {{currency.sign}}">{{currency.code}}</option>
                 }
             </select>
     </div>

@@ -1,6 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Currency } from '../../data/interfaces/currency.interface';
+import { CurrencyService } from '../../data/services/currency/currency.service';
 
 @Component({
   selector: 'app-addcurrency-form',
@@ -12,8 +13,8 @@ export class AddcurrencyFormComponent {
   fb = inject(FormBuilder);
   @Input() currency!: Currency;
 
-  //exchangeService: ExchangeService = inject(ExchangeService);
-  //exchangeResult: ExchangeResult | undefined
+  currencyService: CurrencyService = inject(CurrencyService);
+  currencyResult: Currency | undefined
   form = this.fb.group(
     {
       code: ['', Validators.required],
@@ -24,9 +25,9 @@ export class AddcurrencyFormComponent {
 
   onSubmit() {
     console.log(this.form.value)
-    //this.form.markAllAsTouched
-    //this.form.updateValueAndValidity
-    // @ts-ignore
-    // this.exchangeService.getAmount(this.form.value).subscribe(val => this.exchangeResult = val)
+    this.form.markAllAsTouched
+    this.form.updateValueAndValidity
+    //@ts-ignore
+    this.currencyService.addCurrency(this.form.value).subscribe(val => this.currencyResult = val)
   }
 }

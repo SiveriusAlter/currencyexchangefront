@@ -1,0 +1,46 @@
+:host {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    top: 15%;
+}
+
+.one-line {
+    display: grid;
+    grid-template-columns: 600px 300px;
+    border: 4px solid #000000;
+    border-radius: 6px;
+    height: 48px;
+    background-color: #d4afe0;
+    margin: 0px 0px 16px 0px;
+
+    &:focus-visible,
+    &:hover {
+        border-color: var(--primary-collor);
+        box-shadow: 0 2px 8px var(--primary-collor);
+    }
+
+}
+
+.label-grid {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+
+}
+
+.label {
+    position: relative;
+    left: 70px;
+
+
+    width: 160px;
+    text-align: left;
+    font-size: 20px;
+    padding: 4px 8px;
+
+    border: 4px solid var(--light-collor);
+    border-radius: 8px;
+
+    color: var(--light-collor);
+}

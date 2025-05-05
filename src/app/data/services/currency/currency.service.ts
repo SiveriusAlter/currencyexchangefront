@@ -15,7 +15,7 @@ export class CurrencyService {
       return this.http.get<Currency[]>(`${this.baseAPIUrl}Currency`)
     }
 
-    addCurrency(body: {name: string, code: string, sign:string}) {
+    addCurrency(body: {code: string, fullName: string, sign:string}) {
       return this.http.post<Currency>(`${this.baseAPIUrl}Currency`, body);
     }
 }

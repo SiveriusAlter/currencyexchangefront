@@ -13,9 +13,7 @@ export class ExchangeService {
   baseAPIUrl = environment.apiUrl;
   constructor() { }
 
-  getAmount(test: { baseCurrency: number, targetCurrency: number, amount: number }) {
+  getAmount(test: { baseCurrency: string, targetCurrency: string, amount: number }) {
     return this.http.get<ExchangeResult>(`${this.baseAPIUrl}Exchange/from=${test.baseCurrency}&to=${test.targetCurrency}&amount=${test.amount}`)
   }
-
-
 }
