@@ -16,7 +16,7 @@ export class ExchangerateService {
     return this.http.get<ExchangeResult[]>(`${this.baseAPIUrl}ExchangeRate`)
   }
 
-  addRate(body: { baseCurrency: string, targetCurrency: string, rate: number }) {
+  addRate(body: { baseCurrencyCode: string, targetCurrencyCode: string, rate: number }) {
     return this.http.post<ExchangeRate>(`${this.baseAPIUrl}ExchangeRate`, body);
   }
 

@@ -18,7 +18,7 @@ export class UpdaterateFormComponent {
   exchangeRate: ExchangeRate | undefined;
   form = this.fb.group(
     {
-      exchangeRate: ['', Validators.required],
+      exchangeRate: ['RUB&USD', Validators.required],
       rate: [1],
     }
   );
@@ -33,11 +33,10 @@ export class UpdaterateFormComponent {
 
     const [baseCurrencyCode, targetCurrencyCode] = exchangeRateValue?.split('&');
     const body = {
-      rate: this.form.get('rate')?.value
+      rate: this.form.get('rate')?.value as number
     };
     this.form.markAllAsTouched;
     this.form.updateValueAndValidity;
-    // @ts-ignore
     this.exchangeRateService.updateRate(baseCurrencyCode, targetCurrencyCode, body).subscribe(val => this.exchangeRate = val);
   }
 }

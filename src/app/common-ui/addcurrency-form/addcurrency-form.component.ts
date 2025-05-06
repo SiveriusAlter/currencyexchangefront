@@ -24,10 +24,19 @@ export class AddcurrencyFormComponent {
   );
 
   onSubmit() {
+    this.form.markAllAsTouched();
+    this.form.updateValueAndValidity();
+
+    let code = this.form.value.code as string;
+    let fullName = this.form.value.fullName as string;
+    let sign = this.form.value.sign as string;
+
+    let currency = {
+      code,
+      fullName,
+      sign
+    }
     console.log(this.form.value)
-    this.form.markAllAsTouched
-    this.form.updateValueAndValidity
-    //@ts-ignore
-    this.currencyService.addCurrency(this.form.value).subscribe(val => this.currencyResult = val)
+    this.currencyService.addCurrency(currency).subscribe(val => this.currencyResult = val);
   }
 }

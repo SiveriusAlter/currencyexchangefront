@@ -28,8 +28,18 @@ export class AddrateFormComponent {
     console.log(this.form.value)
     this.form.markAllAsTouched
     this.form.updateValueAndValidity
-    // @ts-ignore
-    this.exchangeRateService.addRate(this.form.value).subscribe(val => this.exchangeRate = val)
+
+    let baseCurrencyCode = this.form.value.baseCurrencyCode as string;
+    let targetCurrencyCode = this.form.value.targetCurrencyCode as string;
+    let rate = this.form.value.rate as number;
+
+    let exchangeRate = {
+      baseCurrencyCode,
+      targetCurrencyCode,
+      rate
+    }
+
+    this.exchangeRateService.addRate(exchangeRate).subscribe(val => this.exchangeRate = val)
   }
 }
 

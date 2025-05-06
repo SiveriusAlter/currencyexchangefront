@@ -10,12 +10,12 @@ export class CurrencyService {
   http: HttpClient = inject(HttpClient)
 
   baseAPIUrl = environment.apiUrl;
-  constructor() {}
-    getCurrency() {
-      return this.http.get<Currency[]>(`${this.baseAPIUrl}Currency`)
-    }
+  constructor() { }
+  getCurrency() {
+    return this.http.get<Currency[]>(`${this.baseAPIUrl}Currency`)
+  }
 
-    addCurrency(body: {code: string, fullName: string, sign:string}) {
-      return this.http.post<Currency>(`${this.baseAPIUrl}Currency`, body);
-    }
+  addCurrency(body: { code: string, fullName: string, sign: string }) {
+    return this.http.post<Currency>(`${this.baseAPIUrl}Currency`, body);
+  }
 }

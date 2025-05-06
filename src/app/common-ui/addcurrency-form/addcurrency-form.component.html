@@ -10,7 +10,7 @@
         <input id="sign" formControlName="sign" type="text" class="input-amount" />
     </div>
     <div>
-        <button class="btn" type="submit">
+        <button class="btn" type="submit" [disabled]="!form.valid">
             Send
         </button>
     </div>
