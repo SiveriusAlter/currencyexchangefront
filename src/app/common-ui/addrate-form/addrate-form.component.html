@@ -5,14 +5,14 @@
         <label class="label" for="Rate">Rate</label>
     </div>
     <div class="one-line">
-        <select formControlName="baseCurrencyCode" class="select-currency" required>
+        <select formControlName="baseCurrencyCode" class="select-currency" (focus)="saveCurrency()" required>
             @for (currency of currencies; track currency.id) {
-            <option label="{{currency.fullName}}   {{currency.sign}}">{{currency.code}}</option>
+            <option [value]="currency.code">{{currency.fullName}} {{currency.sign}}</option>
             }
         </select>
-        <select formControlName="targetCurrencyCode" class="select-currency" required>
+        <select formControlName="targetCurrencyCode" class="select-currency" (focus)="saveCurrency()" required>
             @for (currency of currencies; track currency.id) {
-            <option label="{{currency.fullName}}   {{currency.sign}}">{{currency.code}}</option>
+            <option [value]="currency.code">{{currency.fullName}} {{currency.sign}}</option>
             }
         </select>
         <input id="rate" formControlName="rate" type="number" step="0.001" min="0" value="0" class="input-amount" />

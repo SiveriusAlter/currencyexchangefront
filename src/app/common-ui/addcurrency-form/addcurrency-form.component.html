@@ -5,7 +5,7 @@
         <label class="label" for="sign">Sign</label>
     </div>
     <div class="one-line">
-        <input id="code" formControlName="code" type="text" pattern="[A-Z]" class="input-amount" />
+        <input id="code" formControlName="code" type="text" class="input-amount" />
         <input id="fullName" formControlName="fullName" type="text" class="input-amount" />
         <input id="sign" formControlName="sign" type="text" class="input-amount" />
     </div>
@@ -15,3 +15,6 @@
         </button>
     </div>
 </form>
+<div>
+    <h1>{{error}}</h1>
+</div>

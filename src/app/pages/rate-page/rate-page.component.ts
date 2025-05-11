@@ -11,13 +11,17 @@ import { JsonPipe } from '@angular/common';
   styleUrl: './rate-page.component.scss'
 })
 export class RatePageComponent {
-  exchangeservice = inject(ExchangerateService)
-  exchangerate: ExchangeRate[] = []
-  exr: ExchangeRate = this.exchangerate[0]
+  exchangeservice = inject(ExchangerateService);
+  exchangerate: ExchangeRate[] = [];
+  firsttenrate = this.exchangerate.slice(0, 8);
+  anotherrate = this.exchangerate.slice(9);
+  exr: ExchangeRate = this.exchangerate[0];
+  
   constructor() {
     this.exchangeservice.getRate()
       .subscribe(val => {
-        this.exchangerate = val;
+        this.firsttenrate = val.slice(0, 8);
+        this.anotherrate = val.slice(9)
       })
   }
 }
