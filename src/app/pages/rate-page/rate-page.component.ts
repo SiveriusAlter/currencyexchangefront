@@ -3,10 +3,11 @@ import { ExchangerateCardComponent } from "../../common-ui/exchangerate-card/exc
 import { ExchangeRate } from '../../data/interfaces/exchangerate.interface';
 import { ExchangerateService } from '../../data/services/exchangerate/exchangerate.service';
 import { JsonPipe } from '@angular/common';
+import { FindFieldComponent } from "../../common-ui/find-field/find-field.component";
 
 @Component({
   selector: 'app-rate-page',
-  imports: [ExchangerateCardComponent],
+  imports: [ExchangerateCardComponent, FindFieldComponent],
   templateUrl: './rate-page.component.html',
   styleUrl: './rate-page.component.scss'
 })

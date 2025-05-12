@@ -1,4 +1,9 @@
 <h1>Available Currencies</h1>
+<div>
+    <app-find-field></app-find-field>
+</div>
+<div>
 @for (currency of currencies; track currency.id) {
 <app-currency-card [currency]="currency"></app-currency-card>
 }
+</div>
