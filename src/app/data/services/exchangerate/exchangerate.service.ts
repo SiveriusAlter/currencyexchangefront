@@ -11,16 +11,21 @@ export class ExchangerateService {
   http: HttpClient = inject(HttpClient)
 
   baseAPIUrl = environment.apiUrl;
+  exchangeRateAPIUrl = `${this.baseAPIUrl}ExchangeRate`
   constructor() { }
   getRate() {
-    return this.http.get<ExchangeResult[]>(`${this.baseAPIUrl}ExchangeRate`)
+    return this.http.get<ExchangeResult[]>(`${this.exchangeRateAPIUrl}`)
+  }
+
+  findRage(searchString: string) {
+    return this.http.get<ExchangeRate[]>(`${this.exchangeRateAPIUrl}/${searchString}`)
   }
 
   addRate(body: { baseCurrencyCode: string, targetCurrencyCode: string, rate: number }) {
-    return this.http.post<ExchangeRate>(`${this.baseAPIUrl}ExchangeRate`, body);
+    return this.http.post<ExchangeRate>(`${this.exchangeRateAPIUrl}`, body);
   }
 
-  updateRate(baseCurrencyCode: string, targetCurrencyCode: string, body: { rate: number} ) {
-    return this.http.patch<ExchangeRate>(`${this.baseAPIUrl}ExchangeRate/${baseCurrencyCode}&${targetCurrencyCode}`, body)
+  updateRate(baseCurrencyCode: string, targetCurrencyCode: string, body: { rate: number }) {
+    return this.http.patch<ExchangeRate>(`${this.exchangeRateAPIUrl}/${baseCurrencyCode}&${targetCurrencyCode}`, body)
   }
 }

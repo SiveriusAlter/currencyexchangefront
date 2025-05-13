@@ -13,17 +13,22 @@ export class CurrencyService {
   errorMessage: string = '';
 
   baseAPIUrl = environment.apiUrl;
+  currencyAPIurl = `${this.baseAPIUrl}Currency`;
   constructor() { }
   getCurrency() {
-    return this.http.get<Currency[]>(`${this.baseAPIUrl}Currency`)
+    return this.http.get<Currency[]>(`${this.currencyAPIurl}`)
+  }
+
+  findCurrency(searchString: string) {
+    return this.http.get<Currency[]>(`${this.currencyAPIurl}/${searchString}`)
   }
 
   addCurrency(body: { code: string, fullName: string, sign: string }) {
-    return this.http.post<Currency>(`${this.baseAPIUrl}Currency`, body)
-    .pipe(catchError((err) => {
-      this.errorMessage = err.message;
-      console.log(this.errorMessage);
-      return [];
-    }));
+    return this.http.post<Currency>(`${this.currencyAPIurl}`, body)
+      .pipe(catchError((err) => {
+        this.errorMessage = err.message;
+        console.log(this.errorMessage);
+        return [];
+      }));
   }
 }
