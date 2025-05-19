@@ -3,10 +3,12 @@ import { Currency } from '../../data/interfaces/currency.interface';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ExchangeService } from '../../data/services/exchange/exchange.service';
 import { ExchangeResult } from '../../data/interfaces/exchangeresult';
+import { Errors } from '../../data/interfaces/errors';
+import { ExceptionComponent } from "../exception/exception.component";
 
 @Component({
   selector: 'app-excahnge-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ExceptionComponent],
   templateUrl: './excahnge-form.component.html',
   styleUrl: './excahnge-form.component.scss'
 })
@@ -14,6 +16,8 @@ export class ExcahngeFormComponent {
 
   baseCurrency: string | null | undefined = 'RUB';
   targetCurrency: string | null | undefined = 'USD';
+
+  exception: Errors = { ErrorMessage: '', StatusCode: 200 };
 
   constructor() {
   }
@@ -89,6 +93,11 @@ export class ExcahngeFormComponent {
       amount
     }
 
-    this.exchangeService.getAmount(excahnge).subscribe(val => this.exchangeResult = val);
+    this.exchangeService.getAmount(excahnge).subscribe((data) => {this.exchangeResult = data},
+            (error) => {
+        this.exception.ErrorMessage = 'Error: ' + error.error.ErrorMessage;
+        this.exception.StatusCode = error.error.StatusCode;
+      }
+    );
   }
 }

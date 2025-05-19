@@ -19,6 +19,7 @@ export class RatePageComponent implements OnInit, OnDestroy {
   firsttenrate = this.exchangerate.slice(0, 8);
   anotherrate = this.exchangerate.slice(9);
   exr: ExchangeRate = this.exchangerate[0];
+  placeholder: string = "Find exchange rate..."
 
   private subs: Subscription = new Subscription;
 

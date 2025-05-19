@@ -17,9 +17,10 @@
         </select>
         <input id="rate" formControlName="rate" type="number" step="0.001" min="0" value="0" class="input-amount" />
     </div>
-    <div>
+    <div class="subbline">
         <button class="btn" type="submit">
             Send
         </button>
+        <app-exception [exception]="exception"></app-exception>
     </div>
 </form>

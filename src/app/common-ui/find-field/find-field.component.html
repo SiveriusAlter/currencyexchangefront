@@ -1,5 +1,5 @@
 <form class="find-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-    <input class="find-input" formControlName="findString" type="text" placeholder="Find...">
+    <input class="find-input" formControlName="findString" type="text" placeholder={{placeholder}}>
     <button class="find-but" type="submit">
                <svg icon={{loupe}} class="svg-icon"></svg>
     </button>

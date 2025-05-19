@@ -1,4 +1,4 @@
-import { Component, inject, output } from '@angular/core';
+import { Component, inject, Input, output } from '@angular/core';
 import { SvgComponent } from '../svg/svg.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { FindService } from '../../data/services/find/find.service';
@@ -13,6 +13,7 @@ export class FindFieldComponent {
   constructor(private readonly findService: FindService) { }
 
   loupe = "loupe";
+  @Input() placeholder: string = 'Find...';
 
   fb = inject(FormBuilder);
 

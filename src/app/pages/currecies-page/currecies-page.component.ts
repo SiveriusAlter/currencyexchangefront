@@ -17,6 +17,7 @@ export class CurreciesPageComponent implements OnInit, OnDestroy {
   currencyService = inject(CurrencyService);
   currencies: Currency[] = [];
   private subs: Subscription = new Subscription;
+  placeholder: string = "Find currency..."
 
   constructor(private readonly findService: FindService) {
     this.currencyService!.getCurrency()

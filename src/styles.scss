@@ -16,6 +16,7 @@ body {
 .btn {
     font-weight: 600;
     width: 200px;
+    height: 40px;
     border: none;
     background: var(--primary-collor);
     color: var(--dark-color);
@@ -44,20 +45,23 @@ h2 {
     text-align: center;
 }
 
+
+
 .input-amount {
+    position:sticky;
     font-weight: 500;
-    padding: 8px 16px;
-    margin: 0px;
     font-size: 18px;
+    height: 96%;
+    width: 100%;
     background-color: #d4afe0;
     color: var(--button-dark-color);
-    border-radius: 0;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-right: 1px solid grey;
     border-bottom: 0px solid grey;
     border-top: 0px solid grey;
     border-left: 0px solid grey;
-
+    outline-color: #8e36ac;
+    outline-style: groove;
+    text-align: center;
     cursor: pointer;
 }
 
@@ -79,4 +83,37 @@ h2 {
 .input-amount::-webkit-inner-spin-button,
 .input-amount::-webkit-outer-spin-button {
     -webkit-appearance: none;
+}
+
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::after {
+    position: absolute;
+    content: attr(data-tooltip);
+    opacity: 0;
+    transition: 1s;
+    pointer-events: none;
+    width: 240px;
+    left: 30px; top: 0;
+    padding: 4px;
+    background: var(--primary-collor);
+    border: 1px solid var(--black-collor);
+    border-radius: 4px;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    top: 80px;
+}
+
+.exception {
+    width: 300px;
+    padding: 20px;
+}
+
+.subbline {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
 }

@@ -3,10 +3,12 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ExchangeRate } from '../../data/interfaces/exchangerate.interface';
 import { ExchangerateService } from '../../data/services/exchangerate/exchangerate.service';
 import { Currency } from '../../data/interfaces/currency.interface';
+import { Errors } from '../../data/interfaces/errors';
+import { ExceptionComponent } from "../exception/exception.component";
 
 @Component({
   selector: 'app-addrate-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ExceptionComponent],
   templateUrl: './addrate-form.component.html',
   styleUrl: './addrate-form.component.scss'
 })
@@ -16,6 +18,8 @@ export class AddrateFormComponent {
 
   baseCurrency: string | null | undefined = 'RUB';
   targetCurrency: string | null | undefined = 'USD';
+
+  exception: Errors = {ErrorMessage: '', StatusCode: 200};
 
   exchangeRateService: ExchangerateService = inject(ExchangerateService);
   exchangeRate: ExchangeRate | undefined;
@@ -72,7 +76,11 @@ export class AddrateFormComponent {
       rate
     }
 
-    this.exchangeRateService.addRate(exchangeRate).subscribe(val => this.exchangeRate = val)
+    this.exchangeRateService.addRate(exchangeRate).subscribe((data) => { this.exchangeRate = data },
+      (error) => {
+        this.exception.ErrorMessage = 'Error: ' + error.error.ErrorMessage;
+        this.exception.StatusCode = error.error.StatusCode;
+      })
   }
 }
 

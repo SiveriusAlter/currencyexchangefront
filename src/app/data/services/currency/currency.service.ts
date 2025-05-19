@@ -10,25 +10,20 @@ import { catchError } from 'rxjs';
 export class CurrencyService {
   http: HttpClient = inject(HttpClient)
 
-  errorMessage: string = '';
+  error: Error = new Error;
 
   baseAPIUrl = environment.apiUrl;
   currencyAPIurl = `${this.baseAPIUrl}Currency`;
   constructor() { }
   getCurrency() {
-    return this.http.get<Currency[]>(`${this.currencyAPIurl}`)
+    return this.http.get<Currency[]>(`${this.currencyAPIurl}`);
   }
 
   findCurrency(searchString: string) {
-    return this.http.get<Currency[]>(`${this.currencyAPIurl}/${searchString}`)
+    return this.http.get<Currency[]>(`${this.currencyAPIurl}/${searchString}`);
   }
 
   addCurrency(body: { code: string, fullName: string, sign: string }) {
-    return this.http.post<Currency>(`${this.currencyAPIurl}`, body)
-      .pipe(catchError((err) => {
-        this.errorMessage = err.message;
-        console.log(this.errorMessage);
-        return [];
-      }));
+    return this.http.post<Currency>(`${this.currencyAPIurl}`, body);
   }
 }

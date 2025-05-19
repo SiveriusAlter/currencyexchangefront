@@ -5,16 +5,20 @@
         <label class="label" for="sign">Sign</label>
     </div>
     <div class="one-line">
-        <input id="code" formControlName="code" type="text" class="input-amount" />
-        <input id="fullName" formControlName="fullName" type="text" class="input-amount" />
-        <input id="sign" formControlName="sign" type="text" class="input-amount" />
+        <div class="input-container" data-tooltip="Input 3-5 latin letters in uppercase.">
+            <input id="code" formControlName="code" type="text" class="input-amount" />
+        </div>
+        <div class="input-container" data-tooltip="Input latin letters.">
+            <input id="fullName" formControlName="fullName" type="text" class="input-amount" />
+        </div>
+        <div class="input-container" data-tooltip="Symbol currency.">
+            <input id="sign" formControlName="sign" type="text" class="input-amount" />
+        </div>
     </div>
-    <div>
+    <div class="subbline">
         <button class="btn" type="submit" [disabled]="!form.valid">
             Send
         </button>
+        <app-exception [exception]="exception"></app-exception>
     </div>
 </form>
-<div>
-    <h1>{{error}}</h1>
-</div>

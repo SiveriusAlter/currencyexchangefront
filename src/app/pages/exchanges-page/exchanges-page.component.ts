@@ -14,7 +14,8 @@ import { FindService } from '../../data/services/find/find.service';
 export class ExchangesPageComponent {
   currencyService = inject(CurrencyService);
   currencies: Currency[] = [];
-  
+
+
   constructor() {
 
     this.currencyService!.getCurrency()

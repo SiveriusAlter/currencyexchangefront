@@ -2,10 +2,12 @@ import { Component, inject, Input } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Currency } from '../../data/interfaces/currency.interface';
 import { CurrencyService } from '../../data/services/currency/currency.service';
+import { Errors } from '../../data/interfaces/errors';
+import { ExceptionComponent } from "../exception/exception.component";
 
 @Component({
   selector: 'app-addcurrency-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, ExceptionComponent],
   templateUrl: './addcurrency-form.component.html',
   styleUrl: './addcurrency-form.component.scss'
 })
@@ -14,8 +16,8 @@ export class AddcurrencyFormComponent {
   @Input() currency!: Currency;
 
   currencyService: CurrencyService = inject(CurrencyService);
-  currencyResult: Currency | undefined
-  error: any;
+  currencyResult: Currency | undefined;
+  exception: Errors = {ErrorMessage: '', StatusCode: 200};
 
   form = this.fb.group(
     {
@@ -42,7 +44,11 @@ export class AddcurrencyFormComponent {
     }
     console.log(this.form.value);
     this.currencyService.addCurrency(currency).subscribe(
-      data => {this.currencyResult = data}
+      (data) => {this.currencyResult = data},
+      (error) => {
+        this.exception.ErrorMessage = 'Error: ' + error.error.ErrorMessage;
+        this.exception.StatusCode = error.error.StatusCode;
+      }
     );
   }
 }

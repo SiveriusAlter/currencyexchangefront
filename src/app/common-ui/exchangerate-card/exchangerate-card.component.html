@@ -1,10 +1,10 @@
 @if(exchangerate) {
     <div class="currency-card">
         <div class="currency-field">
-            <strong>{{ exchangerate!.baseCurrency.code }}</strong>
+            <strong>{{exchangerate.baseCurrency.fullName}} - {{ exchangerate!.baseCurrency.code }}</strong>
         </div>
         <div class="currency-field">
-            <strong>{{ exchangerate!.targetCurrency.code }}</strong>
+            <strong>{{exchangerate.targetCurrency.fullName}} - {{ exchangerate!.targetCurrency.code }}</strong>
         </div>
         <div class="currency-field">
             <strong>{{ exchangerate!.rate }}</strong>
