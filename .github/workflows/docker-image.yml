@@ -1,0 +1,28 @@
+name: Angular
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+      
+      - name: build image
+        run: docker build . -t alexhiems/currencyexchangefront:latest
+      - name: push image to docker hub
+        run: |
+          docker login -u alexhiems -p ${{ secrets.DOCKERHUBCURRENCYFRONT }}
+          docker push alexhiems/currencyexchangefront:latest
