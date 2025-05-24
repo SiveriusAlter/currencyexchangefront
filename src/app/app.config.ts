@@ -12,5 +12,5 @@ export const appConfig: ApplicationConfig = {
 };
 
 export const environment: Environment = {
-  apiUrl: 'http://localhost/'
+  apiUrl: '/api/'
 };
