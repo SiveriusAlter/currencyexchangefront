@@ -17,7 +17,7 @@ export class AddcurrencyFormComponent {
 
   currencyService: CurrencyService = inject(CurrencyService);
   currencyResult: Currency | undefined;
-  exception: Errors = {ErrorMessage: '', StatusCode: 200};
+  exception: Errors = { ErrorMessage: '', StatusCode: 200 };
 
   form = this.fb.group(
     {
@@ -44,7 +44,11 @@ export class AddcurrencyFormComponent {
     }
     console.log(this.form.value);
     this.currencyService.addCurrency(currency).subscribe(
-      (data) => {this.currencyResult = data},
+      (data) => {
+        this.currencyResult = data;
+        this.exception.ErrorMessage = 'Валюта успешно добавлена!';
+        this.exception.StatusCode = 200;
+      },
       (error) => {
         this.exception.ErrorMessage = 'Error: ' + error.error.ErrorMessage;
         this.exception.StatusCode = error.error.StatusCode;

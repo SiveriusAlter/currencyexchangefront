@@ -25,6 +25,6 @@
         <button class="btn" type="submit">
             Convert
         </button>
-        <app-exception [exception]="exception"></app-exception>
+        <app-exception [exception]="exception.ErrorMessage"  [statusCode]="exception.StatusCode"></app-exception>
     </div>
 </form>

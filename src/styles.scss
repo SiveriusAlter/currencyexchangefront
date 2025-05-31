@@ -48,7 +48,7 @@ h2 {
 
 
 .input-amount {
-    position:sticky;
+    position: sticky;
     font-weight: 500;
     font-size: 18px;
     height: 96%;
@@ -96,7 +96,8 @@ h2 {
     transition: 1s;
     pointer-events: none;
     width: 240px;
-    left: 30px; top: 0;
+    left: 30px;
+    top: 0;
     padding: 4px;
     background: var(--primary-collor);
     border: 1px solid var(--black-collor);
@@ -109,8 +110,17 @@ h2 {
 }
 
 .exception {
+    color: red;
     width: 300px;
     padding: 20px;
+    font-weight: 600;
+}
+
+.success {
+    color: rgb(124, 238, 124);
+    width: 300px;
+    padding: 20px;
+    font-weight: 600;
 }
 
 .subbline {

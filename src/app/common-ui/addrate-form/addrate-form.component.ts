@@ -19,7 +19,7 @@ export class AddrateFormComponent {
   baseCurrency: string | null | undefined = 'RUB';
   targetCurrency: string | null | undefined = 'USD';
 
-  exception: Errors = {ErrorMessage: '', StatusCode: 200};
+  exception: Errors = { ErrorMessage: '', StatusCode: 200 };
 
   exchangeRateService: ExchangerateService = inject(ExchangerateService);
   exchangeRate: ExchangeRate | undefined;
@@ -76,7 +76,11 @@ export class AddrateFormComponent {
       rate
     }
 
-    this.exchangeRateService.addRate(exchangeRate).subscribe((data) => { this.exchangeRate = data },
+    this.exchangeRateService.addRate(exchangeRate).subscribe((data) => {
+      this.exchangeRate = data;
+      this.exception.ErrorMessage = 'Валюта успешно добавлена!';
+      this.exception.StatusCode = 200;
+    },
       (error) => {
         this.exception.ErrorMessage = 'Error: ' + error.error.ErrorMessage;
         this.exception.StatusCode = error.error.StatusCode;

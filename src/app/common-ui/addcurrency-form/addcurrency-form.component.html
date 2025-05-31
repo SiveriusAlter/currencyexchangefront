@@ -19,6 +19,6 @@
         <button class="btn" type="submit" [disabled]="!form.valid">
             Send
         </button>
-        <app-exception [exception]="exception"></app-exception>
+        <app-exception [exception]="exception.ErrorMessage" [statusCode]="exception.StatusCode"></app-exception>
     </div>
 </form>
